@@ -46,16 +46,16 @@ addPhraseToDisplay(phraseArray);
 
 // Checking if the letter is in the phrase
 const checkLetter = button => {
-    let phraseItems = ul.children;
-    let correct = null;
-    for (let i = 0; phraseItems.length; i++) {
-        const letter = phraseItems[i].textContent.toLowerCase();
-        if (button.textContent === letter) {
-            phraseItems[i].classList.add('show');
-            correct = true;
+    const letters = document.querySelectorAll('.letter');
+    let match = null; 
+    for (let i = 0; i < letters.length; i++) {
+        if (button.textContent === letters[i].textContent) {
+            letters[i].classList.add('show');
+            match = true;
         }
-    } return correct;
+    } return match;
 }
+
 
 //listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
@@ -65,6 +65,11 @@ qwerty.addEventListener('click', (e) => {
         buttonClicked.disabled = 'true';
 
         const letterFound = checkLetter(buttonClicked);
+        if (letterFound == null) {
+            let hearts = document.querySelectorAll('.tries img');
+            hearts[missed].src = 'images/lostHeart.png';
+            missed++;
+        }
     }
 });
 
