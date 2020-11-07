@@ -81,10 +81,41 @@ function checkWin() {
         overlay.className = 'win';
         document.querySelector('h2').innerHTML = 'Congratulations ! <br> You won !';
         overlay.style.display = 'flex';
+        startButton.textContent = 'Play Again'
+        resetGame();
     } else if (missed > 4) {
         overlay.className = 'lose';
         document.querySelector('h2').innerHTML = 'Sorry, <br> You lost!';
         overlay.style.display = 'flex';
+        startButton.textContent = 'Play Again';
+    } 
+    startButton.addEventListener('click', reset);
+
+}
+
+
+const reset = () => {
+    // document.querySelector('#phrase').remove('li', 'show');
+    missed = 0;
+    let newPhrase = getRandomPhraseAsArray(phrases);
+
+    // resets onscreen keyboard
+    let buttons = document.querySelectorAll("BUTTON");
+    
+    if (startButton.textContent === 'Play Again') {
+        ul.innerHTML = '';
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].removeAttribute('disabled');
+            buttons[i].setAttribute('class', '');
+        };
+        let hearts = document.querySelectorAll('.tries img');
+        for (let i = 0; i < hearts.length; i++) {
+            hearts[i].src = 'images/liveHeart.png';
+        }
+        addPhraseToDisplay(newPhrase);
     }
 }
+
+
+
 
