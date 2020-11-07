@@ -11,11 +11,11 @@ startButton.addEventListener('click', (event) => {
 }); 
 
 phrases = [
-    'Freedom of speech',
-    'A piece of cake',
-    'An arm and a leg', 
-    'Love birds',
-    'Elephant in the room'
+    'freedom of speech',
+    'a piece of cake',
+    'an arm and a leg', 
+    'love birds',
+    'elephant in the room'
 ];
 
 // A random phrase from an array is returned and split
@@ -70,6 +70,20 @@ qwerty.addEventListener('click', (e) => {
             hearts[missed].src = 'images/lostHeart.png';
             missed++;
         }
-    }
+    } checkWin()
 });
+
+function checkWin() {
+    let liLetter = document.querySelectorAll('.letter');
+    let liShow = document.querySelectorAll('.show');
+    if (liLetter.length === liShow.length) {
+        overlay.className = 'win';
+        document.querySelector('h2').innerHTML = 'Congratulations ! <br> You won !';
+        overlay.style.display = 'flex';
+    } else if (missed > 4) {
+        overlay.className = 'lose';
+        document.querySelector('h2').innerHTML = 'Sorry, <br> You lost!';
+        overlay.style.display = 'flex';
+    }
+}
 
