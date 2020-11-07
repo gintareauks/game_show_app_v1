@@ -73,6 +73,7 @@ qwerty.addEventListener('click', (e) => {
     } checkWin()
 });
 
+// Check if the game has been won or lost
 function checkWin() {
     let liLetter = document.querySelectorAll('.letter');
     let liShow = document.querySelectorAll('.show');
