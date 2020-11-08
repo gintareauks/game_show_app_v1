@@ -93,12 +93,10 @@ function checkWin() {
 }
 
 
-const reset = () => {
-    // document.querySelector('#phrase').remove('li', 'show');
+const reset = () => {;
     missed = 0;
     let newPhrase = getRandomPhraseAsArray(phrases);
 
-    // resets onscreen keyboard
     let buttons = document.querySelectorAll("BUTTON");
     
     if (startButton.textContent === 'Start Again') {
