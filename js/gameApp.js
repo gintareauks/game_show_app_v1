@@ -79,15 +79,14 @@ function checkWin() {
     let liShow = document.querySelectorAll('.show');
     if (liLetter.length === liShow.length) {
         overlay.className = 'win';
-        document.querySelector('h2').innerHTML = 'Congratulations ! <br> You won !';
+        document.querySelector('h2').innerHTML = 'Congratulations ! <br> YOU WON !';
         overlay.style.display = 'flex';
-        startButton.textContent = 'Play Again'
-        resetGame();
+        startButton.textContent = 'Start Again'
     } else if (missed > 4) {
         overlay.className = 'lose';
-        document.querySelector('h2').innerHTML = 'Sorry, <br> You lost!';
+        document.querySelector('h2').innerHTML = 'SORRY, YOU LOST';
         overlay.style.display = 'flex';
-        startButton.textContent = 'Play Again';
+        startButton.textContent = 'Start Again';
     } 
     startButton.addEventListener('click', reset);
 
@@ -102,7 +101,7 @@ const reset = () => {
     // resets onscreen keyboard
     let buttons = document.querySelectorAll("BUTTON");
     
-    if (startButton.textContent === 'Play Again') {
+    if (startButton.textContent === 'Start Again') {
         ul.innerHTML = '';
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].removeAttribute('disabled');
