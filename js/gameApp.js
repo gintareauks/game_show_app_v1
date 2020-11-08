@@ -3,10 +3,12 @@ const phrase = document.getElementById('phrase');
 const startButton = document.querySelector('a.btn__reset');
 const overlay = document.getElementById('overlay');
 const ul = document.getElementsByTagName('ul')[0];
+
+// The game has 5 tries at the start. 
 let missed = 0;
 
 // Clicking on the "Start Game" button hides the start-screen overlay
-startButton.addEventListener('click', (event) => {
+startButton.addEventListener('click', (e) => {
     overlay.style.display = 'none';
 }); 
 
@@ -18,7 +20,7 @@ phrases = [
     'elephant in the room'
 ];
 
-// A random phrase from an array is returned and split
+// A random phrase from an array is returned
 const getRandomPhraseAsArray = arr => {
     const randomNum = Math.floor(Math.random() * arr.length);
     return arr[randomNum].split('');
@@ -56,7 +58,6 @@ const checkLetter = button => {
     } return match;
 }
 
-
 //listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
     const buttonClicked = event.target;
@@ -88,22 +89,22 @@ function checkWin() {
         overlay.style.display = 'flex';
         startButton.textContent = 'Start Again';
     } 
-    startButton.addEventListener('click', reset);
-
+    startButton.addEventListener('click', (e) => {
+        reset();
+    });
 }
 
-
+// Restart the game from the beginning 
 const reset = () => {;
     missed = 0;
     let newPhrase = getRandomPhraseAsArray(phrases);
-
-    let buttons = document.querySelectorAll("BUTTON");
+    let buttons = document.querySelectorAll('button');
     
     if (startButton.textContent === 'Start Again') {
         ul.innerHTML = '';
         for (let i = 0; i < buttons.length; i++) {
+            buttons[i].className = '';
             buttons[i].removeAttribute('disabled');
-            buttons[i].setAttribute('class', '');
         };
         let hearts = document.querySelectorAll('.tries img');
         for (let i = 0; i < hearts.length; i++) {
