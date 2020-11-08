@@ -4,7 +4,7 @@ const startButton = document.querySelector('a.btn__reset');
 const overlay = document.getElementById('overlay');
 const ul = document.getElementsByTagName('ul')[0];
 
-// The game has 5 tries at the start. 
+// Keep track of the number of guesses the player has missed (5 total tries)
 let missed = 0;
 
 // Clicking on the "Start Game" button hides the start-screen overlay
