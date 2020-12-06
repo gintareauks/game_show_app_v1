@@ -58,7 +58,7 @@ const checkLetter = button => {
     } return match;
 }
 
-//listen for the onscreen keyboard to be clicked
+// Listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', (e) => {
     const buttonClicked = event.target;
     if (buttonClicked.tagName === 'BUTTON') {
